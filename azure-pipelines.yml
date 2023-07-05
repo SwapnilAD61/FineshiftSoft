@@ -23,3 +23,13 @@ stages:
         publishJUnitResults: true
         testResultsFiles: '**/surefire-reports/TEST-*.xml'
         goals: 'package'
+        
+  - job:
+    steps:
+      - task: CopyPublishBuildArtifacts@1
+        inputs:
+          CopyRoot: '$(System.DefaultWorkingDirectory)'
+          Contents: '**/target/*.war'
+          ArtifactName: 'drop'
+          ArtifactType: 'Container'
+     
