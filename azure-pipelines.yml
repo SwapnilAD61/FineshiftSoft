@@ -40,4 +40,5 @@ stages:
   jobs:
   - job: Deploy
     steps:
-    echo $(Build.ArtifactStagingDirectory)
+    - script:
+        echo $(Build.ArtifactStagingDirectory)
