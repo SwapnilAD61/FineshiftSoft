@@ -25,6 +25,7 @@ stages:
         goals: 'package'
         
   - job: Artifact
+    dependsOn: MavenBuild
     steps:
       - task: CopyFiles@2
         displayName: 'Copy Files to artifact staging directory'
