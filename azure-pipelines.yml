@@ -11,7 +11,7 @@ stages:
   pool:
     java_aws
   jobs:
-  - job:
+  - job: MavenBuild
     steps:
     - task: Maven@3
       inputs:
@@ -24,12 +24,15 @@ stages:
         testResultsFiles: '**/surefire-reports/TEST-*.xml'
         goals: 'package'
         
-  - job:
+  - job: Artifact
     steps:
-      - task: CopyPublishBuildArtifacts@1
+      - task: CopyFiles@2
+        displayName: 'Copy Files to artifact staging directory'
         inputs:
-          CopyRoot: '$(System.DefaultWorkingDirectory)'
+          SourceFolder: '$(System.DefaultWorkingDirectory)'
           Contents: '**/target/*.war'
-          ArtifactName: 'drop'
-          ArtifactType: 'Container'
+          TargetFolder: $(Build.ArtifactStagingDirectory)
+    
+      - upload: $(Build.ArtifactStagingDirectory)
+        artifact: drop
      
