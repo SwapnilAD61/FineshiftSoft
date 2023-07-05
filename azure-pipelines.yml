@@ -34,3 +34,10 @@ stages:
     - upload: $(Build.ArtifactStagingDirectory)
       artifact: drop
      
+- stage:
+  pool:
+    java_aws
+  jobs:
+  - job: Deploy
+    steps:
+    echo $(Build.ArtifactStagingDirectory)
