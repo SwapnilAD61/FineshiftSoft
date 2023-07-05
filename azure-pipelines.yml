@@ -8,6 +8,8 @@ trigger:
 
 stages:
 - stage:
+  pool:
+    java_aws
   jobs:
   - job:
     steps:
