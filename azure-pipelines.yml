@@ -49,7 +49,7 @@ stages:
     
 - stage:
   pool:
-    java_aws
+    CURD_App
   jobs:
   - job: Deploy
     steps:
