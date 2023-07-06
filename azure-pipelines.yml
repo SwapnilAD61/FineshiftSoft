@@ -33,6 +33,13 @@ stages:
     
     # - upload: $(Build.ArtifactStagingDirectory)
     #   artifact: artifact
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: '$(Build.BinariesDirectory)'
+        includeRootFolder: true
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        replaceExistingArchive: true
     - task: CopyPublishBuildArtifacts@1
       inputs:
         CopyRoot: '$(System.DefaultWorkingDirectory)'
