@@ -9,7 +9,7 @@ trigger:
 stages:
 - stage:
   pool:
-    CURD_App
+    emp
   jobs:
   - job: MavenBuild
     steps:
@@ -36,7 +36,7 @@ stages:
     
 - stage:
   pool:
-    CURD_App
+    emp
   jobs:
   - job: Deploy
     steps:
