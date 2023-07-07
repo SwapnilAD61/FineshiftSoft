@@ -24,28 +24,15 @@ stages:
         testResultsFiles: '**/surefire-reports/TEST-*.xml'
         goals: 'package'
         
-    # - task: CopyFiles@2
-    #   displayName: 'Copy Files to artifact staging directory'
-    #   inputs:
-    #       SourceFolder: '$(System.DefaultWorkingDirectory)'
-    #       Contents: '**/target/*.war'
-    #       TargetFolder: $(Build.ArtifactStagingDirectory)
+    - task: CopyFiles@2
+      displayName: 'Copy Files to artifact staging directory'
+      inputs:
+          SourceFolder: '$(System.DefaultWorkingDirectory)'
+          Contents: '**/target/*.war'
+          TargetFolder: $(Build.ArtifactStagingDirectory)
     
-    # - upload: $(Build.ArtifactStagingDirectory)
-    #   artifact: artifact
-    - task: ArchiveFiles@2
-      inputs:
-        rootFolderOrFile: '$(Build.BinariesDirectory)'
-        includeRootFolder: true
-        archiveType: 'zip'
-        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-        replaceExistingArchive: true
-    - task: CopyPublishBuildArtifacts@1
-      inputs:
-        CopyRoot: '$(System.DefaultWorkingDirectory)'
-        Contents: 'target/*.war'
-        ArtifactName: 'drops'
-        ArtifactType: 'Container' 
+    - upload: $(Build.ArtifactStagingDirectory)
+      artifact: artifact
     
 - stage:
   pool:
