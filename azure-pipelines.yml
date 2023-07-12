@@ -52,7 +52,7 @@ stages:
     
 - stage:
   pool:
-    emp
+    FOR SONARQUBE
   jobs:
   - job: Deploy
     steps:
