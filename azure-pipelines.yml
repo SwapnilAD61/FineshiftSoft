@@ -13,16 +13,24 @@ stages:
   jobs:
   - job: MavenBuild
     steps:
-    - task: Maven@3
+    - task: SonarQubeAnalyze@5
+      inputs:
+        jdkversion: 'JAVA_HOME_11_X64'
+    - task: Maven@4
       inputs:
         mavenPomFile: 'pom.xml'
-        mavenOptions: '-Xmx3072m'
-        javaHomeOption: 'JDKVersion'
-    # jdkVersionOption: '1.8'
-        jdkArchitectureOption: 'x64'
         publishJUnitResults: true
         testResultsFiles: '**/surefire-reports/TEST-*.xml'
-        goals: 'package'
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: true
+        sqMavenPluginVersionChoice: 'latest'
+        
+    - task: SonarQubePublish@5
+      inputs:
+        pollingTimeoutSec: '300'
         
     - task: CopyFiles@2
       displayName: 'Copy Files to artifact staging directory'
