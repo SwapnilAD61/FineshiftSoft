@@ -13,9 +13,15 @@ stages:
   jobs:
   - job: MavenBuild
     steps:
-    - task: SonarQubeAnalyze@5
+    - task: SonarQubePrepare@5
       inputs:
-        jdkversion: 'JAVA_HOME_11_X64'
+        SonarQube: 'Sonarqube testing'
+        scannerMode: 'Other'
+        extraProperties: |
+          # Additional properties that will be passed to the scanner,
+          # Put one key=value per line, example:
+          # sonar.exclusions=**/*.bin
+          sonar.projectKey=Employee_Registration_Employee_Registration_AYlIZ2dMnXsFX0hM52RE
     - task: Maven@4
       inputs:
         mavenPomFile: 'pom.xml'
