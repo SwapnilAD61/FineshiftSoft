@@ -23,11 +23,6 @@ stages:
           # sonar.exclusions=**/*.bin
           sonar.projectKey=Employee_Registration_Employee_Registration_AYlIZ2dMnXsFX0hM52RE
     
-    - task: JavaToolInstaller@0
-      inputs:
-        versionSpec: '11'
-        jdkArchitectureOption: 'x64'
-        jdkSourceOption: 'PreInstalled'
     - task: Maven@4
       inputs:
         mavenPomFile: 'pom.xml'
