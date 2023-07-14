@@ -13,32 +13,45 @@ stages:
   jobs:
   - job: MavenBuild
     steps:
-    - task: SonarQubePrepare@5
-      inputs:
-        SonarQube: 'Sonarqube testing'
-        scannerMode: 'Other'
-        extraProperties: |
-          # Additional properties that will be passed to the scanner,
-          # Put one key=value per line, example:
-          # sonar.exclusions=**/*.bin
-          sonar.projectKey=Employee_Registration_Employee_Registration_AYlIZ2dMnXsFX0hM52RE
+    # - task: SonarQubePrepare@5
+    #   inputs:
+    #     SonarQube: 'Sonarqube testing'
+    #     scannerMode: 'Other'
+    #     extraProperties: |
+    #       # Additional properties that will be passed to the scanner,
+    #       # Put one key=value per line, example:
+    #       # sonar.exclusions=**/*.bin
+    #       sonar.projectKey=Employee_Registration_Employee_Registration_AYlIZ2dMnXsFX0hM52RE
     
+    # - task: Maven@4
+    #   inputs:
+    #     mavenPomFile: 'pom.xml'
+    #     publishJUnitResults: true
+    #     testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    #     javaHomeOption: 'JDKVersion'
+    #     # jdkVersionOption: '1.11'
+    #     mavenVersionOption: 'Default'
+    #     mavenAuthenticateFeed: false
+    #     effectivePomSkip: false
+    #     sonarQubeRunAnalysis: true
+    #     sqMavenPluginVersionChoice: 'latest'
+        
+    # - task: SonarQubePublish@5
+    #   inputs:
+    #     pollingTimeoutSec: '300'
     - task: Maven@4
       inputs:
         mavenPomFile: 'pom.xml'
         publishJUnitResults: true
         testResultsFiles: '**/surefire-reports/TEST-*.xml'
         javaHomeOption: 'JDKVersion'
-        # jdkVersionOption: '1.11'
-        mavenVersionOption: 'Default'
+        jdkVersionOption: '1.11'
+        mavenVersionOption: 'Path'
+        mavenDirectory: '/usr/share/maven'
+        mavenSetM2Home: false
         mavenAuthenticateFeed: false
         effectivePomSkip: false
-        sonarQubeRunAnalysis: true
-        sqMavenPluginVersionChoice: 'latest'
-        
-    - task: SonarQubePublish@5
-      inputs:
-        pollingTimeoutSec: '300'
+        sonarQubeRunAnalysis: false
         
     - task: CopyFiles@2
       displayName: 'Copy Files to artifact staging directory'
