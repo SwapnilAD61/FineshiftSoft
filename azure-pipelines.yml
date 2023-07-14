@@ -9,7 +9,7 @@ trigger:
 stages:
 - stage:
   pool:
-    sonarqube
+    CRUD_App
   jobs:
   - job: MavenBuild
     steps:
@@ -56,15 +56,22 @@ stages:
     - task: SonarQubePublish@5
       inputs:
         pollingTimeoutSec: '300'
-    - task: CopyFiles@2
-      displayName: 'Copy Files to artifact staging directory'
+
+    - task: CopyPublishBuildArtifacts@1
       inputs:
-          SourceFolder: '$(System.DefaultWorkingDirectory)'
-          Contents: '**/target/*.war'
-          TargetFolder: $(Build.ArtifactStagingDirectory)
+        CopyRoot: '$(System.DefaultWorkingDirectory)'
+        Contents: '**/target/*.war'
+        ArtifactName: 'artifact'
+        ArtifactType: 'Container'
+    # - task: CopyFiles@2
+    #   displayName: 'Copy Files to artifact staging directory'
+    #   inputs:
+    #       SourceFolder: '$(System.DefaultWorkingDirectory)'
+    #       Contents: '**/target/*.war'
+    #       TargetFolder: $(Build.ArtifactStagingDirectory)
     
-    - upload: $(Build.ArtifactStagingDirectory)
-      artifact: artifact
+    # - upload: $(Build.ArtifactStagingDirectory)
+    #   artifact: artifact
     
 - stage:
   pool:
