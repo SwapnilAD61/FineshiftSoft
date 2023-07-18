@@ -72,6 +72,13 @@ stages:
     
     # - upload: $(Build.ArtifactStagingDirectory)
     #   artifact: artifact
+    - task: SnykSecurityScan@1
+      inputs:
+        serviceConnectionEndpoint: 'Snyk'
+        testType: 'app'
+        monitorWhen: 'always'
+        failOnIssues: false
+        projectName: 'employee_registration'
     
 - stage:
   pool:
