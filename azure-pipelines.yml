@@ -9,52 +9,34 @@ trigger:
 stages:
 - stage:
   pool:
-    sonarqube
+    Sonar
   jobs:
   - job: MavenBuild
     steps:
     - task: SonarQubePrepare@5
       inputs:
-        SonarQube: 'Sonarqube testing'
+        SonarQube: 'sonarqube'
         scannerMode: 'Other'
         extraProperties: |
-          ## Additional properties that will be passed to the scanner,
+          # Additional properties that will be passed to the scanner,
           # Put one key=value per line, example:
           # sonar.exclusions=**/*.bin
-           sonar.projectKey=My_Project_My_Project_AYm_NFSbYgAWN8qpdIGE
-           sonar.projectName=My_Project
+          sonar.projectKey=My_Project_My_Project_AYnT9ZjQvbFFpJcbv_Gh
 
-
-    
-    # - task: Maven@4
-    #   inputs:
-    #     mavenPomFile: 'pom.xml'
-    #     publishJUnitResults: true
-    #     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    #     javaHomeOption: 'JDKVersion'
-    #     # jdkVersionOption: '1.11'
-    #     mavenVersionOption: 'Default'
-    #     mavenAuthenticateFeed: false
-    #     effectivePomSkip: false
-    #     sonarQubeRunAnalysis: true
-    #     sqMavenPluginVersionChoice: 'latest'
-        
-    # - task: SonarQubePublish@5
-    #   inputs:
-    #     pollingTimeoutSec: '300'
-   
     - task: Maven@4
       inputs:
         mavenPomFile: 'pom.xml'
         publishJUnitResults: true
         testResultsFiles: '**/surefire-reports/TEST-*.xml'
-        javaHomeOption: 'Path'
-        jdkDirectory: '/lib/jvm/java-11-openjdk-amd64'
+        javaHomeOption: 'JDKVersion'
         mavenVersionOption: 'Default'
         mavenAuthenticateFeed: false
         effectivePomSkip: false
         sonarQubeRunAnalysis: true
         sqMavenPluginVersionChoice: 'latest'
+    
+   
+    
     
     - task: SonarQubePublish@5
       inputs:
@@ -85,7 +67,7 @@ stages:
     
 - stage:
   pool:
-    sonarqube
+    Sonar
   jobs:
   - job: Deploy
     steps:
