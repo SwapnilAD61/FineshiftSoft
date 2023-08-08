@@ -28,8 +28,8 @@ stages:
         mavenPomFile: 'pom.xml'
         publishJUnitResults: true
         testResultsFiles: '**/surefire-reports/TEST-*.xml'
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '1.11'
+        javaHomeOption: 'Path'
+        jdkDirectory: '/usr/lib/jvm/java-11-openjdk-amd64/'
         mavenVersionOption: 'Default'
         mavenAuthenticateFeed: false
         effectivePomSkip: false
