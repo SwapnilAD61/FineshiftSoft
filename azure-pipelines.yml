@@ -13,7 +13,12 @@ stages:
   jobs:
   - job: MavenBuild
     steps:
-    
+    - task: SnykSecurityScan@1
+      inputs:
+        serviceConnectionEndpoint: 'snyk'
+        testType: 'app'
+        monitorWhen: 'always'
+        failOnIssues: true
     - task: Maven@4
       inputs:
         mavenPomFile: 'pom.xml'
@@ -25,12 +30,7 @@ stages:
         effectivePomSkip: false
         sonarQubeRunAnalysis: true
         sqMavenPluginVersionChoice: 'latest'
-    - task: SnykSecurityScan@1
-      inputs:
-        serviceConnectionEndpoint: 'snyk'
-        testType: 'app'
-        monitorWhen: 'always'
-        failOnIssues: true
+    
     #- task: SonarQubePublish@5
      # inputs:
       #  pollingTimeoutSec: '300'
@@ -58,11 +58,11 @@ stages:
     #    failOnIssues: false
       #  projectName: 'employee_registration'
     
-- stage:
-  pool:
-    Sonar
-  jobs:
-  - job: Deploy
-    steps:
-    - script:
-        echo $(Build.ArtifactStagingDirectory)
+#- stage:
+ # pool:
+ #   Sonar
+  #jobs:
+  #- job: Deploy
+    #steps:
+    #- script:
+      #  echo $(Build.ArtifactStagingDirectory)
