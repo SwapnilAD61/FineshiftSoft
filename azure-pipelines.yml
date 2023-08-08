@@ -13,16 +13,12 @@ stages:
   jobs:
   - job: MavenBuild
     steps:
-    - task: SonarQubePrepare@5
+    - task: SnykSecurityScan@1
       inputs:
-        SonarQube: 'sonarqube'
-        scannerMode: 'Other'
-        extraProperties: |
-          # Additional properties that will be passed to the scanner,
-          # Put one key=value per line, example:
-          # sonar.exclusions=**/*.bin
-          sonar.projectKey=My_Project_My_Project_AYm_NFSbYgAWN8qpdIGE
-          sonar.projectName=My_Project
+        serviceConnectionEndpoint: 'snyk'
+        testType: 'app'
+        monitorWhen: 'always'
+        failOnIssues: true
     
     - task: Maven@4
       inputs:
