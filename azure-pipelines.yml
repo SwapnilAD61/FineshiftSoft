@@ -23,6 +23,7 @@ stages:
           # sonar.exclusions=**/*.bin
           sonar.projectKey=My_Project_My_Project_AYnT9ZjQvbFFpJcbv_Gh
 
+    
     - task: Maven@4
       inputs:
         mavenPomFile: 'pom.xml'
@@ -32,9 +33,8 @@ stages:
         mavenVersionOption: 'Default'
         mavenAuthenticateFeed: false
         effectivePomSkip: false
-        sonarQubeRunAnalysis: false
-    
-   
+        sonarQubeRunAnalysis: true
+        sqMavenPluginVersionChoice: 'pom'
     
     
     - task: SonarQubePublish@5
