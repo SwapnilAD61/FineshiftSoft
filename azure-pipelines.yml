@@ -13,12 +13,10 @@ stages:
   jobs:
   - job: MavenBuild
     steps:
-    - task: SnykSecurityScan@1
+    - task: SonarQubePrepare@5
       inputs:
-        serviceConnectionEndpoint: 'snyk'
-        testType: 'app'
-        monitorWhen: 'always'
-        failOnIssues: true
+        SonarQube: 'sonarqube'
+        scannerMode: 'Other'
     - task: Maven@4
       inputs:
         mavenPomFile: 'pom.xml'
@@ -30,9 +28,9 @@ stages:
         effectivePomSkip: false
         sonarQubeRunAnalysis: false
     
-    #- task: SonarQubePublish@5
-     # inputs:
-      #  pollingTimeoutSec: '300'
+    - task: SonarQubePublish@5
+      inputs:
+        pollingTimeoutSec: '300'
 
     - task: CopyPublishBuildArtifacts@1
       inputs:
