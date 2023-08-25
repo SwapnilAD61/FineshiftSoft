@@ -13,14 +13,10 @@ stages:
   jobs:
   - job: MavenBuild
     steps:
-    - task: SnykSecurityScan@1
+    - task: SonarQubePrepare@5
       inputs:
-        serviceConnectionEndpoint: 'snyk'
-        testType: 'app'
-        monitorWhen: 'always'
-        failOnIssues: true
-        projectName: 'My_Project'
-        organization: '796e9eb8-0004-4f8d-aa27-44650ccf87d8'
+        SonarQube: 'sonarqube'
+        scannerMode: 'Other'
    
     - task: Maven@4
       inputs:
