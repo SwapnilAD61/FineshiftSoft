@@ -17,9 +17,9 @@ maven-build:
 
 
 
-# include:
-#   - template: Jobs/SAST.gitlab-ci.yml
-#   - template: Security/Secret-Detection.gitlab-ci.yml
+include:
+  - template: Jobs/SAST.gitlab-ci.yml
+  - template: Security/Secret-Detection.gitlab-ci.yml
 
 
 # dploy:
