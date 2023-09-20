@@ -9,7 +9,7 @@ maven-build:
   tags:
     - ramdas
   script: 
-    - mvn clean install
+    - mvn clean package
     - pwd
   artifacts:
      paths:
