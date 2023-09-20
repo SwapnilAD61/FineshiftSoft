@@ -27,6 +27,6 @@ dploy:
   tags:
     - ramdas
   script:
-    - sudo cp -r /home/gitlab-runner/builds/jB45YxjdX/0/Fineshift2023/Regstration_form/target/*.war /opt/tomcat/webapps
+    -  cp  /home/gitlab-runner/builds/jB45YxjdX/0/Fineshift2023/Regstration_form/target/*.war /opt/tomcat/webapps
 
 
