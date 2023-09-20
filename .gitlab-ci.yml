@@ -22,9 +22,11 @@ include:
   - template: Security/Secret-Detection.gitlab-ci.yml
 
 
-# dploy:
-#   stage: deploy
-#   script:
-#     - cp /home/gitlab-runner/builds/p6GwWc_M/0/Fineshift2023/Train-Ticket-Reservation-System/target/TrainBook-1.0.0-SNAPSHOT.war /opt/tomcat/webapps
+dploy:
+  stage: deploy
+  tags:
+    - ramdas
+  script:
+    - sudo cp -r /home/gitlab-runner/builds/jB45YxjdX/0/Fineshift2023/Regstration_form/target/*.war /opt/tomcat/webapps
 
 
