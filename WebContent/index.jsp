@@ -59,7 +59,7 @@ div.ex {
 	</div>
 	<div class="footer">
   	 	<p>Author: Shubham@Fineshift<br>
-  		<a href="mailto:shubh@fineshift.com">shubh@fineshift.com</a></p>
+  		<a href="mailto:Ramdas@fineshift.com">shubh@fineshift.com</a></p>
 	</div>
 
 </body>
