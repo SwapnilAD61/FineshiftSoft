@@ -6,17 +6,20 @@ stages:
 
 maven-build:
   stage: build
+  tags:
+    - ramdas
   script: 
     - mvn clean install
+    - pwd
   artifacts:
      paths:
        - target/*.war 
 
 
 
-include:
-  - template: Jobs/SAST.gitlab-ci.yml
-  - template: Security/Secret-Detection.gitlab-ci.yml
+# include:
+#   - template: Jobs/SAST.gitlab-ci.yml
+#   - template: Security/Secret-Detection.gitlab-ci.yml
 
 
 # dploy:
