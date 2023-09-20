@@ -6,8 +6,8 @@ stages:
 
 maven-build:
   stage: build
-  # tags:
-  #   - ramdas
+  tags:
+    - ramdas
   script: 
     - mvn clean install
     - pwd
