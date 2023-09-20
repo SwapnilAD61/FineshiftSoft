@@ -7,7 +7,7 @@ stages:
 maven-build:
   stage: build
   script: 
-    - mvn clean package
+    - mvn clean install
   artifacts:
      paths:
        - target/*.war 
