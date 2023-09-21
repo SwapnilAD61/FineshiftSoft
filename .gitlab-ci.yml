@@ -1,7 +1,7 @@
 stages:
   - build
   # - test
-  # - deploy
+  - deploy
   
 
 maven-build:
@@ -22,7 +22,7 @@ maven-build:
 #   - template: Security/Secret-Detection.gitlab-ci.yml
 
 
-dploy:
+deploy:
   stage: deploy
   tags:
     - shell
