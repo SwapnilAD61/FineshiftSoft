@@ -1,9 +1,7 @@
 stages:
   - build
-  # - test
   - deploy
   
-
 maven-build:
   stage: build
   tags:
@@ -14,13 +12,6 @@ maven-build:
   artifacts:
      paths:
        - target/*.war 
-
-
-
-# include:
-#   - template: Jobs/SAST.gitlab-ci.yml
-#   - template: Security/Secret-Detection.gitlab-ci.yml
-
 
 deploy:
   stage: deploy
