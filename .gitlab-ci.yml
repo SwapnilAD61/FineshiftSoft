@@ -22,11 +22,11 @@ maven-build:
 #   - template: Security/Secret-Detection.gitlab-ci.yml
 
 
-# dploy:
-#   stage: deploy
-#   tags:
-#     - ramdas
-#   script:
-#     -  cp  /home/gitlab-runner/builds/jB45YxjdX/0/Fineshift2023/Regstration_form/target/*.war /opt/tomcat/webapps
+dploy:
+  stage: deploy
+  tags:
+    - shell
+  script:
+    -  cp  /home/fs-swapnil/builds/xdLbaBMfL/0/fineshift/users/swapnil/Regstration_form/target/*.war /opt/tomcat/webapps
 
 
