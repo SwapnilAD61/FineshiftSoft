@@ -1,13 +1,13 @@
 stages:
   - build
-  - test
-  - deploy
+  # - test
+  # - deploy
   
 
 maven-build:
   stage: build
   tags:
-    - ramdas
+    - shell
   script: 
     - mvn clean package
     - pwd
@@ -17,16 +17,16 @@ maven-build:
 
 
 
-include:
-  - template: Jobs/SAST.gitlab-ci.yml
-  - template: Security/Secret-Detection.gitlab-ci.yml
+# include:
+#   - template: Jobs/SAST.gitlab-ci.yml
+#   - template: Security/Secret-Detection.gitlab-ci.yml
 
 
-dploy:
-  stage: deploy
-  tags:
-    - ramdas
-  script:
-    -  cp  /home/gitlab-runner/builds/jB45YxjdX/0/Fineshift2023/Regstration_form/target/*.war /opt/tomcat/webapps
+# dploy:
+#   stage: deploy
+#   tags:
+#     - ramdas
+#   script:
+#     -  cp  /home/gitlab-runner/builds/jB45YxjdX/0/Fineshift2023/Regstration_form/target/*.war /opt/tomcat/webapps
 
 
