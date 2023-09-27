@@ -19,7 +19,7 @@ deploy:
     - shell1
   environment: Production
   script:
-    -  cp  /home/fs-swapnil/builds/xdLbaBMfL/0/fineshift/users/swapnil/Regstration_form/target/*.war /opt/tomcat/webapps
+    -  cp  /home/gitlab-runner/builds/Mikr1EfYo/0/fineshift/users/swapnil/Regstration_form/target/*.war /opt/tomcat/webapps
 
 
 
