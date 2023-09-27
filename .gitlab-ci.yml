@@ -22,5 +22,3 @@ deploy:
     -  cp  /home/gitlab-runner/builds/Mikr1EfYo/0/fineshift/users/swapnil/Regstration_form/target/*.war /opt/tomcat/webapps
 
 
-
-
