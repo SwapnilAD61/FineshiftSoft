@@ -5,7 +5,7 @@ stages:
 maven-build:
   stage: build
   tags:
-    - shell
+    - shell1
   script: 
     - mvn clean package
     - pwd
@@ -16,7 +16,7 @@ maven-build:
 deploy:
   stage: deploy
   tags:
-    - shell
+    - shell1
   environment: Production
   script:
     -  cp  /home/fs-swapnil/builds/xdLbaBMfL/0/fineshift/users/swapnil/Regstration_form/target/*.war /opt/tomcat/webapps
