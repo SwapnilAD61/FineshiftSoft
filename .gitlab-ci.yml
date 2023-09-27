@@ -22,3 +22,5 @@ deploy:
     -  cp  /home/fs-swapnil/builds/xdLbaBMfL/0/fineshift/users/swapnil/Regstration_form/target/*.war /opt/tomcat/webapps
 
 
+
+
