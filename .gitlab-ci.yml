@@ -13,6 +13,7 @@ maven-build:
      paths:
        - target/*.war 
 
+
 deploy:
   stage: deploy
   tags:
