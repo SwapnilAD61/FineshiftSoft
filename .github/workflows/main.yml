@@ -1,0 +1,26 @@
+
+name: Semgrep
+on:
+  push:
+   branches: [ "main" ]
+  
+permissions:
+  contents: read
+ 
+jobs:
+  seagrep:
+     permissions:
+         contents: read
+         security-events: write
+         actions: read
+     name: Scan
+     runs-on: ubuntu-latest
+     container:
+        image: returntocorp/semgrep
+     steps:
+       - uses: actions/checkout@v3
+       - name: Semgrep Scan
+         id: scan
+         run: |
+              semgrep \
+                 --sarif --output result.sarif
